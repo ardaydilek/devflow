@@ -16,19 +16,24 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState("light");
 
   const handleThemeChange = () => {
-    if (theme === "dark") {
-      // setTheme("light");
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
+    } else if (localStorage.theme === "light") {
+      setTheme("light");
       document.documentElement.classList.remove("dark");
     } else {
-      // setTheme("dark");
-      document.documentElement.classList.add("dark");
+      setTheme("system");
     }
   };
 
   useEffect(() => {
     handleThemeChange();
   }, [theme]);
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
