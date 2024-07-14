@@ -1,7 +1,9 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <main>
+      <h1 className="h1-bold">Next.js 14 we&apos;re coming</h1>
+      <h2 className="h2-bold">Next.js 14 we&apos;re coming</h2>
+      <h3 className="h3-bold">Next.js 14 we&apos;re coming</h3>
+    </main>
   );
 }
